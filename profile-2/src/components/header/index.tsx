@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
-import './header.scss';
-import profilePic from '../../assets/prof11.png';
-import EmailModal from './components/emailModal/EmailModal';
-import MailLogo from '../../assets/icons/noto_e-mail.png';
+import React, { useState } from "react";
+import "./header.scss";
+import profilePic from "../../assets/prof11.png";
+import EmailModal from "./components/emailModal/EmailModal";
+import ResumeModal from "./components/resumeModal/resumeModal";
+import MailLogo from "../../assets/icons/noto_e-mail.png";
+import Resume from "../../assets/icons/resume.png";
 
 const Header: React.FC = () => {
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showEmailModal, setShowEmailModal] = useState<boolean>(false);
+  const [showResumeModal, setShowResumeModal] = useState<boolean>(false);
 
   const handleBellClick = () => {
-    setShowModal(true);
+    setShowEmailModal(true);
+  };
+
+  const handleResumeClick = () => {
+    setShowResumeModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowEmailModal(false);
+    setShowResumeModal(false);
   };
 
   const handleSendEmail = (content: string) => {
-    console.log('Sending email with content:', content);
+    console.log("Sending email with content:", content);
     handleCloseModal();
     // You can add your email sending logic here
   };
@@ -24,7 +32,9 @@ const Header: React.FC = () => {
   return (
     <div className="Header">
       <div className="navigation">
-        <div className="navigation__controls">asdasd</div>
+        <div className="navigation__controls" onClick={handleResumeClick}>
+          <img src={Resume} alt="CV logo" />
+        </div>
         <div className="navigation__bell" onClick={handleBellClick}>
           <img src={MailLogo} alt="Mail Logo" />
         </div>
@@ -34,10 +44,10 @@ const Header: React.FC = () => {
           <img src={profilePic} alt="Profile" />
         </div>
         <div>
-          <h2>Pontus lindström</h2>
+          <h2>Pontus Lindström</h2>
         </div>
         <div>
-          <p>Junior, Frontend developer</p>
+          <p>Junior, Frontend Developer</p>
         </div>
         <div className="social-links">
           <a
@@ -66,7 +76,15 @@ const Header: React.FC = () => {
           </a>
         </div>
       </div>
-      <EmailModal show={showModal} handleClose={handleCloseModal} handleSend={handleSendEmail} />
+      <EmailModal
+        show={showEmailModal}
+        handleClose={handleCloseModal}
+        handleSend={handleSendEmail}
+      />
+      <ResumeModal
+        show={showResumeModal}
+        handleClose={handleCloseModal}
+      />
     </div>
   );
 };

@@ -74,6 +74,15 @@
       animation: bounce 0.3s infinite alternate;
     }
   }
+  &__controls{
+   
+    img {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    
+    }
+  }
 }
 
 @keyframes bounce {
@@ -112,3 +121,4 @@
     }
   }
 }
+
