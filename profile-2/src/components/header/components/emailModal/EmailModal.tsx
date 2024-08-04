@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import './EmailModal.scss';
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import "./EmailModal.scss";
 
 interface EmailModalProps {
   show: boolean;
@@ -7,7 +7,11 @@ interface EmailModalProps {
   handleSend: (content: string) => void;
 }
 
-const EmailModal: React.FC<EmailModalProps> = ({ show, handleClose, handleSend }) => {
+const EmailModal: React.FC<EmailModalProps> = ({
+  show,
+  handleClose,
+  handleSend,
+}) => {
   const [emailContent, setEmailContent] = useState<string>("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -21,9 +25,11 @@ const EmailModal: React.FC<EmailModalProps> = ({ show, handleClose, handleSend }
   };
 
   return (
-    <div className={`modal ${show ? 'show' : ''}`} onClick={handleClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <span className="close" onClick={handleClose}>&times;</span>
+    <div className={`modal ${show ? "show" : ""}`} onClick={handleClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <span className="close" onClick={handleClose}>
+          &times;
+        </span>
         <form onSubmit={handleSubmit}>
           <h2>Send Email</h2>
           <textarea
@@ -39,4 +45,3 @@ const EmailModal: React.FC<EmailModalProps> = ({ show, handleClose, handleSend }
 };
 
 export default EmailModal;
-

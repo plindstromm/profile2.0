@@ -81,10 +81,7 @@ const Header: React.FC = () => {
         handleClose={handleCloseModal}
         handleSend={handleSendEmail}
       />
-      <ResumeModal
-        show={showResumeModal}
-        handleClose={handleCloseModal}
-      />
+      <ResumeModal show={showResumeModal} handleClose={handleCloseModal} />
     </div>
   );
 };
